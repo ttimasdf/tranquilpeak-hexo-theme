@@ -1,8 +1,8 @@
 # Developer documentation #
 
-This documentation will help you to understand tranquilpeak-hexo-theme code.  
+This documentation will help you to understand Tranquilpeak Hexo theme code.  
 
-If you want to report a bug or ask a question, [create an issue](https://github.com/LouisBarranqueiro/tranquilpeak-hexo-theme/issues/new).
+If you want to report a bug or ask a question, [create an issue](https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/new).
 
 ## Summary ##
 
@@ -14,6 +14,7 @@ If you want to report a bug or ask a question, [create an issue](https://github.
     * [Views](#views)
     * [Assets](#assets)
          * [Stylesheets](#stylesheets)
+         * [Images](#images)
          * [Images](#images)
          * [Javascript](#javascript)
 - [Build](#build)
@@ -29,7 +30,7 @@ If you want to report a bug or ask a question, [create an issue](https://github.
 ## General ##
 
 - **Author** : Louis Barranqueiro
-- **Version** : 1.4.3
+- **Version** : 1.6.2
 - **Compatibility** : Hexo 3.0.0 or later
 
 ## Features ##
@@ -59,6 +60,7 @@ If you want to report a bug or ask a question, [create an issue](https://github.
   
 **Integrated services :**  
 - Disqus  
+- Duoshuo  
 - Google analytics  
 - Gravatar  
 - Swiftype  
@@ -73,17 +75,17 @@ If you want to report a bug or ask a question, [create an issue](https://github.
 
 ## Installation ##
 
-1. Run `git clone https://github.com/LouisBarranqueiro/tranquilpeak-hexo-theme.git`
+1. Run `git clone https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak.git`
 2. Rename the folder in `tranquilpeak` and place it in `themes` folder of your Hexo blog
 3. Modify the theme in `_config.yml` by changing `theme` variable  to `tranquilpeak`
 4. Complete `theme/tranquilpeak/_config.yml` with your informations by following directives in comments
 
-If you want to configure the theme, please follow the [user documentation](https://github.com/LouisBarranqueiro/tranquilpeak-hexo-theme/blob/master/docs/user.md)  
+If you want to configure the theme, please follow the [user documentation](https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/blob/master/docs/user.md)  
   
 ## Code structure ##
 
 ```
-tranquilpeak-hexo-theme
+tranquilpeak
 ├── docs
 │   ├── developer.md
 │   └── user.md
@@ -98,6 +100,7 @@ tranquilpeak-hexo-theme
 │   │   │   ├── actions.ejs
 │   │   │   ├── category.ejs
 │   │   │   ├── disqus.ejs
+│   │   │   ├── duoshuo.ejs
 │   │   │   ├── gallery.ejs
 │   │   │   ├── header.ejs
 │   │   │   ├── header-cover.ejs
@@ -131,7 +134,9 @@ tranquilpeak-hexo-theme
 │   ├── filters
 │   │   └── excerpt.js
 │   ├── tags
+│   │   ├── alert.js
 │   │   ├── fancybox.js
+│   │   ├── hightlight_text.js
 │   │   ├── image.js
 │   │   └── wide_image.js
 ├── source
@@ -139,15 +144,16 @@ tranquilpeak-hexo-theme
 │   │   ├── base
 │   │   │   ├── _base.scss
 │   │   ├── components
+│   │   │   ├── _alert.scss
 │   │   │   ├── _archives.scss
 │   │   │   ├── _box.scss
 │   │   │   ├── _button.scss
 │   │   │   ├── _caption.scss
-│   │   │   ├── _category.scss
+│   │   │   ├── _code.scss
 │   │   │   ├── _figure.scss
 │   │   │   ├── _form.scss
 │   │   │   ├── _hide.scss
-│   │   │   ├── _highlight.scss
+│   │   │   ├── _highlight-text.scss
 │   │   │   ├── _icon.scss
 │   │   │   ├── _image-gallery.scss
 │   │   │   ├── _link.scss
@@ -198,6 +204,7 @@ tranquilpeak-hexo-theme
 │   │   ├── about.js
 │   │   ├── archives-filter.js
 │   │   ├── categories-filter.js
+│   │   ├── codeblock-resizer.js
 │   │   ├── fancybox.js
 │   │   ├── header.js
 │   │   ├── image-gallery.js
@@ -265,6 +272,7 @@ If you want to add a new language, duplicate an existing language file and repla
     │   │   ├── actions.ejs
     │   │   ├── category.ejs
     │   │   ├── disqus.ejs
+    │   │   ├── duoshuo.ejs
     │   │   ├── gallery.ejs
     │   │   ├── header.ejs
     │   │   ├── header-cover.ejs
@@ -307,7 +315,9 @@ If you want to add a new language, duplicate an existing language file and repla
 │   ├── filters
 │   │   └── excerpt.js
 │   ├── tags
+│   │   ├── alert.js
 │   │   ├── fancybox.js
+│   │   ├── highlight_text.js
 │   │   ├── image.js
 │   │   └── wide_image.js
 ```
@@ -330,11 +340,11 @@ Each scrips is executed a the startup of Hexo. They are separed by categories:
         │   ├── _box.scss
         │   ├── _button.scss
         │   ├── _caption.scss
-        │   ├── _category.scss
+        │   ├── _code.scss
         │   ├── _figure.scss
         │   ├── _form.scss
         │   ├── _hide.scss
-        │   ├── _highlight.scss
+        │   ├── _hightlight_text.scss
         │   ├── _icon.scss
         │   ├── _image-gallery.scss
         │   ├── _link.scss
@@ -410,6 +420,7 @@ Contains all images of the theme.
     ├── about.js
     ├── archives-filter.js
     ├── categories-filter.js
+    ├── codeblock-resizer.js
     ├── fancybox.js
     ├── header.js
     ├── image-gallery.js
@@ -423,6 +434,7 @@ Contains all images of the theme.
 - **about.js** : Fade out the blog and let drop the about card of the author and vice versa
 - **archives-filter.js** : Filter posts by using their date on archives page : `/archives`
 - **categories-filter.js** : Filter posts by using their categories on archives page : `/categories`
+- **codeblock-resizer.js** : Resize codeblocks to fit the screen width
 - **fancybox.js.js** : Run Fancybox plugin
 - **header.js** : Hide the header when the user scrolls down, and show it when he scrolls up
 - **image-gallery.js** : Resize all images of an image-gallery
@@ -497,12 +509,12 @@ Bower dependencies :
     │   ├── default.js
     │   ├── linkAssets.js
     │   ├── linkAssetsProd.js
-    │   └──syncAssets.js
+    │   └── syncAssets.js
     └── pipeline.js
 ```  
 
 - **config** : Default tasks
-- **register** : Alias tasks which call mutliple default tasks
+- **register** : Alias tasks which call multiple default tasks
 - **pipeline.js** : Files which contains a list of javascript and stylesheets files linked to the blog
 
 #### Pipeline #####

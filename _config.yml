@@ -1,5 +1,5 @@
-# Tranquilpeak Hexo theme
-# Version : 1.4.3
+# Tranquilpeak
+# Version : 1.6.2
 # Author : Louis Barranqueiro
 
 # I STRONGLY recommend you to use a CDN to speed up loading of pages.
@@ -165,10 +165,16 @@ tag_pagination: true
 
 
 # Integrated services
+# You can't use Disqus and Duoshuo together
+# then fill the right shortname
 # Your Disqus shortname
 disqus_shortname:
+# Your Duoshuo shortname
+duoshuo_shortname:
 # Your Google analystics web property ID : UA-XXXXX-X
 google_analytics_id:
+# Your Baidu analystics web property ID : 9505a5af654a2478f93fd6c0ae4f687d
+baidu_analytics_id:
 # Your Gravatar email. Overwrite `author.picture` everywhere in the blog
 gravatar_email:
 # Your swiftype install key
