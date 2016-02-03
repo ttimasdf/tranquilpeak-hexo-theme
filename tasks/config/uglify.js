@@ -8,6 +8,7 @@ module.exports = function(grunt) {
                         'jQuery',
                         'InstantClick',
                         'searchFunc',
+                        'Tranquilpeak',
                         'fancybox'
                     ]
                 }

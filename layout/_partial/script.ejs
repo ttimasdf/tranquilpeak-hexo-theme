@@ -32,8 +32,12 @@
           _hmt.push(['_trackPageview', location.pathname + location.search]);
         if (typeof ga !== 'undefined')          // Google analytics
             ga('send', 'pageview', location.pathname + location.search);
+        Tranquilpeak();
       }
     });
     InstantClick.init();
     </script>
 <% } %>
+<script type="text/javascript" data-no-instant>
+    Tranquilpeak();
+</script>
