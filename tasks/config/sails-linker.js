@@ -8,7 +8,7 @@ module.exports = function(grunt) {
                 appRoot:  'source/'
             },
             files:   {
-                'layout/_partial/script.ejs': require('../pipeline').tranquilpeakJsFilesToInject
+                'layout/_partial/head.ejs': require('../pipeline').tranquilpeakJsFilesToInject
             }
         },
         devCss:  {
@@ -30,7 +30,7 @@ module.exports = function(grunt) {
                 appRoot:  'source/'
             },
             files:   {
-                'layout/_partial/script.ejs': 'source/assets/js/script.min.js'
+                'layout/_partial/head.ejs': 'source/assets/js/script.min.js'
             }
         },
         prodCss: {

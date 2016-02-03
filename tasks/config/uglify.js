@@ -7,6 +7,7 @@ module.exports = function(grunt) {
                     except: [
                         'jQuery',
                         'InstantClick',
+                        'searchFunc',
                         'fancybox'
                     ]
                 }
