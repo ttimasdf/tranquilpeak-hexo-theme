@@ -17,7 +17,8 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301 USA
 //
-
+}
+t2=Tranquilpeak;
 var searchFunc = function(path, search_id, content_id) {
     'use strict';
     $.ajax({
@@ -117,3 +118,5 @@ var searchFunc = function(path, search_id, content_id) {
         }
     });
 }
+Tranquilpeak = function(){
+    t2();//delete t2;
