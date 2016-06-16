@@ -11,7 +11,6 @@ module.exports = function(grunt) {
         mangle: {
           except: [
             'InstantClick',
-            'Tranquilpeak',
             'jQuery',
             'fancybox'
           ]
