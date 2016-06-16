@@ -91,6 +91,7 @@ sidebar:
             title: global.rss
             url: /atom.xml
             icon: rss
+            blacklist: true
 
 
 # Header configuration
@@ -160,6 +161,8 @@ image_gallery: true
 archive_pagination: true
 category_pagination: true
 tag_pagination: true
+# Enable InstantClick
+instantclick: false
 
 
 # Integrated services

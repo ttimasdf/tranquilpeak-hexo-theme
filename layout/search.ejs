@@ -1,0 +1,17 @@
+<div id="search" class="main-content-wrap">
+    <form id="filter-form" action="#">
+        <input name="search" type="text" id="local-search-input" class="form-control input--xlarge" placeholder="<%= __('global.search_text') %>" autofocus="autofocus">
+    </form>
+    <section class="archive box">
+        <div id="local-search-result"></div>
+    </section>
+    <section class="archive box">
+        <h1><%= __('global.recent_posts') %></h1>
+        <% site.posts.sort('date').slice(0, 9).each(function(post) { %>
+            <li class="archive-post archive-day" data-date="<%= post.date.format('YYYYMMDD') %>">
+                <a class="archive-post-title" href="<%- url_for(post.path) %>"><%= post.title || '(' + __('post.no_title') + ')' %></a>
+                <span class="archive-post-date"><%= ' - ' + post.date.locale(page.lang).format(__('date_format')).toLowerCase() %></span>
+            </li>
+        <% }) %>
+    </section>
+</div>
