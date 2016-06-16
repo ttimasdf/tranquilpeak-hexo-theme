@@ -157,10 +157,15 @@
     }
   };
 
-  $(document).ready(function() {
+  var fn = function() {
     if ($('#categories-archives').length) {
       var categoriesFilter = new CategoriesFilter('#categories-archives');
       categoriesFilter.run();
     }
-  });
+  }
+  if (typeof InstantClick !== 'undefined')
+    InstantClick.on('change', fn);
+  else
+    $(document).ready(fn);
+
 })(jQuery);

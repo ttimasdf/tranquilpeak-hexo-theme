@@ -34,8 +34,13 @@
     }
   };
 
-  $(document).ready(function() {
+  var fn = function() {
     var tabbedCodeBlocks = new TabbedCodeBlock('.codeblock--tabbed');
     tabbedCodeBlocks.run();
-  });
+  }
+  if (typeof InstantClick !== 'undefined')
+    InstantClick.on('change', fn);
+  else
+    $(document).ready(fn);
+
 })(jQuery);

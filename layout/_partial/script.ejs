@@ -2,18 +2,19 @@
 <%- js('assets/js/jquery.js') %>
 <%- js('assets/js/jquery.fancybox.js') %>
 <%- js('assets/js/jquery.fancybox-thumbs.js') %>
+<%- js('assets/js/instantclick.js') %>
 <%- js('assets/js/tranquilpeak.js') %>
 <!--SCRIPTS END-->
 <% if (post.comments) { %>
     <% if (theme.disqus_shortname) { %>
-        <script>
+        <script data-no-instant>
              var disqus_config = function () {
                  this.page.url = '<%= post.permalink %>';
                  <% if (post.disqusIdentifier) { %>
                     this.page.identifier = '<%= post.disqusIdentifier %>';
                  <% } else { %>
                     this.page.identifier = '<%= post.path %>';
-                 <% } %>                 
+                 <% } %>
              };
             (function() {
                 var d = document, s = d.createElement('script');
@@ -50,22 +51,41 @@
 <% } %>
 <% if (theme.instantclick) { %>
     <script data-no-instant>
-    InstantClick.on('change', function(isInitialLoad) {
-      if (isInitialLoad === false) {
-        if (typeof MathJax !== 'undefined')     // MathJax compatibility
-          MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-        if (typeof prettyPrint !== 'undefined') // Google code prettify
-          prettyPrint();
-        if (typeof _hmt !== 'undefined')        // Baidu analytics
-          _hmt.push(['_trackPageview', location.pathname + location.search]);
-        if (typeof ga !== 'undefined')          // Google analytics
+    InstantClick.on('change', function() {
+        if (typeof MathJax !== 'undefined') {    // MathJax compatibility
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+        }
+        if (typeof prettyPrint !== 'undefined') {// Google code prettify
+            prettyPrint();
+        }
+        if (typeof _hmt !== 'undefined') {       // Baidu analytics
+            _hmt.push(['_trackPageview', location.pathname + location.search]);
+        }
+        if (typeof ga !== 'undefined') {         // Google analytics
             ga('send', 'pageview', location.pathname + location.search);
-        Tranquilpeak();
-      }
+        }
+        if (document.getElementById("disqus_thread")) {
+            if(typeof DISQUS !== 'undefined') {
+                DISQUS.reset({
+                    reload: true,
+                    config: function () {
+                        this.page.identifier = window.location.pathname;
+                        this.page.url = window.location.href;
+                        this.page.title = document.title;
+                        this.language = en;
+                    }
+                });
+            }
+            else {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = '<%= theme.disqus_shortname %>';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            }
+        }
     });
-    InstantClick.init();
+    InstantClick.init(100);
     </script>
 <% } %>
-<script type="text/javascript" data-no-instant>
-    Tranquilpeak();
-</script>

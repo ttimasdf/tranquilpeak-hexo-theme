@@ -64,8 +64,13 @@
     }
   };
 
-  $(document).ready(function() {
+  var fn = function() {
     var header = new Header();
     header.run();
-  });
+  }
+  if (typeof InstantClick !== 'undefined')
+    InstantClick.on('change', fn);
+  else
+    $(document).ready(fn);
+
 })(jQuery);

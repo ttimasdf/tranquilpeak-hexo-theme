@@ -92,7 +92,7 @@
     }
   };
 
-  $(document).ready(function() {
+  var fn = function() {
     if ($('.image-gallery').length) {
       var imageGallery = new ImageGallery();
 
@@ -101,5 +101,9 @@
         imageGallery.run();
       }, 500);
     }
-  });
+  }
+  if (typeof InstantClick !== 'undefined')
+    InstantClick.on('change', fn);
+  else
+    $(document).ready(fn);
 })(jQuery);

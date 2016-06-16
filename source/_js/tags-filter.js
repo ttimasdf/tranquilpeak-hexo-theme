@@ -127,10 +127,15 @@
     }
   };
 
-  $(document).ready(function() {
+  var fn = function() {
     if ($('#tags-archives').length) {
       var tagsFilter = new TagsFilter('#tags-archives');
       tagsFilter.run();
     }
-  });
+  }
+  if (typeof InstantClick !== 'undefined')
+    InstantClick.on('change', fn);
+  else
+    $(document).ready(fn);
+
 })(jQuery);

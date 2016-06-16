@@ -151,10 +151,15 @@
     }
   };
 
-  $(document).ready(function() {
+  var fn = function() {
     if ($('#archives').length) {
       var archivesFilter = new ArchivesFilter('#archives');
       archivesFilter.run();
     }
-  });
+  }
+  if (typeof InstantClick !== 'undefined')
+    InstantClick.on('change', fn);
+  else
+    $(document).ready(fn);
+
 })(jQuery);

@@ -1,9 +1,9 @@
 (function($) {
   'use strict';
-  
+
   // Run fancybox feature
 
-  $(document).ready(function() {
+  var fn = function() {
     function fancyFox() {
       var arrows = true;
       var thumbs = null;
@@ -52,5 +52,10 @@
     $(window).smartresize(function() {
       fancyFox();
     });
-  });
+  }
+  if (typeof InstantClick !== 'undefined')
+    InstantClick.on('change', fn);
+  else
+    $(document).ready(fn);
+
 })(jQuery);

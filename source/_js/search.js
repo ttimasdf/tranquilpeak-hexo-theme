@@ -117,9 +117,14 @@
             }
         });
     }
-    $(document).ready(function() {
+    var fn = function() {
         if ($('#local-search-input').length) {
             searchFunc("/search.xml", 'local-search-input', 'local-search-result');
         }
-    });
+    }
+    if (typeof InstantClick !== 'undefined')
+      InstantClick.on('change', fn);
+    else
+      $(document).ready(fn);
+
 }(jQuery);
