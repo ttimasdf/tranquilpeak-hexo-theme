@@ -62,10 +62,15 @@
     }
   };
 
-  $(document).ready(function() {
+  var fn = function() {
     if ($('.post-bottom-bar').length) {
       var postBottomBar = new PostBottomBar();
       postBottomBar.run();
     }
-  });
+  }
+  if (typeof InstantClick !== 'undefined')
+    InstantClick.on('change', fn);
+  else
+    $(document).ready(fn);
+
 })(jQuery);

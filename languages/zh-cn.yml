@@ -22,6 +22,8 @@ global:
     share_on_google_plus: "分享到 Google+"
     share_on_facebook: "分享到 Facebook"
     share_on_twitter: "分享到 Twitter"
+    recent_posts: "最近文章"
+    search_text: "搜索全文"
     search_category: "搜索分类"
     search_tag: "搜索标签"
     search_date: "搜索日期 (YYYY/MM/DD)"

@@ -160,8 +160,13 @@
     }
   };
 
-  $(document).ready(function() {
+  var fn = function() {
     var sidebar = new Sidebar();
     sidebar.run();
-  });
+  }
+  if (typeof InstantClick !== 'undefined')
+    InstantClick.on('change', fn);
+  else
+    $(document).ready(fn);
+
 })(jQuery);

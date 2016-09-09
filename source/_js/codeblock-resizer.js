@@ -47,12 +47,17 @@
     }
   };
 
-  $(document).ready(function() {
+  var fn = function() {
     // register jQuery function to check if an element has an horizontal scroll bar
     $.fn.hasHorizontalScrollBar = function() {
       return this.get(0).scrollWidth > this.innerWidth();
     };
     var resizer = new CodeBlockResizer('figure.highlight');
     resizer.run();
-  });
+  }
+  if (typeof InstantClick !== 'undefined')
+    InstantClick.on('change', fn);
+  else
+    $(document).ready(fn);
+
 })(jQuery);

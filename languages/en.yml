@@ -22,6 +22,8 @@ global:
     share_on_google_plus: "Share on Google Plus"
     share_on_facebook: "Share on Facebook"
     share_on_twitter: "Share on Twitter"
+    recent_posts: "Recent posts"
+    search_text: "Search everything"
     search_category: "Search category"
     search_tag: "Search tag"
     search_date: "Search date (YYYY/MM/DD)"

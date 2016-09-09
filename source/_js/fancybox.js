@@ -1,6 +1,6 @@
 (function($) {
   'use strict';
-  
+
   // Run fancybox feature
 
   $(document).ready(function() {
@@ -53,9 +53,14 @@
     }
 
     fancyFox();
-    
+
     $(window).smartresize(function() {
       fancyFox();
     });
-  });
+  }
+  if (typeof InstantClick !== 'undefined')
+    InstantClick.on('change', fn);
+  else
+    $(document).ready(fn);
+
 })(jQuery);

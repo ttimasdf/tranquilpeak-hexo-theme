@@ -82,8 +82,13 @@
     }
   };
 
-  $(document).ready(function() {
+  var fn = function() {
     var shareOptionsBar = new ShareOptionsBar();
     shareOptionsBar.run();
-  });
+  }
+  if (typeof InstantClick !== 'undefined')
+    InstantClick.on('change', fn);
+  else
+    $(document).ready(fn);
+
 })(jQuery);
