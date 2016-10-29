@@ -3,7 +3,7 @@
 
   // Run fancybox feature
 
-  $(document).ready(function() {
+  var fn = function() {
     /**
      * Configure and run Fancybox plugin
      * @returns {void}

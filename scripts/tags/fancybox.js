@@ -22,14 +22,19 @@ hexo.extend.tag.register('fancybox', function(args) {
     cssClass = args.shift();
   }
   original = args.shift();
+  if (hexo.config.post_asset_folder) {
+    var asset = hexo.model('PostAsset').findOne({post: this._id, slug: original});
+    if (!asset) return "<p>[FancyBox: Image Not Found!]</p>";
+    original = require('url').resolve(hexo.config.root, asset.path);
+  }
 
   if (args.length && pathRegex.test(args[0])) {
     thumbnail = args.shift();
   }
 
-  var title = args.join(' ');
-  
-  return '<a class="fancybox" href="' + original + '" title="' + title + '">' +
+  var title = args.join(' ') || !!asset && asset.slug || '';
+
+  return '<a class="fancybox" href="' + original + '" title="' + title + '" data-no-instant>' +
     '<img class="' + cssClass + '" src="' + (thumbnail || original) + '" alt="' + title + '">' +
     '</a>' +
     (title && cssClass !== 'inline' ? '<span class="caption">' + title + '</span>' : '');

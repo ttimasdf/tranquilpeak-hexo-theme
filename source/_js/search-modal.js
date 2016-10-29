@@ -203,11 +203,15 @@
     }
   };
 
-  $(document).ready(function() {
+  var fn = function() {
     // launch feature only if there is an Algolia index available
     if (typeof algoliaIndex !== 'undefined') {
       var searchModal = new SearchModal();
       searchModal.run();
     }
-  });
+  };
+  if (typeof InstantClick !== 'undefined')
+    InstantClick.on('change', fn);
+  else
+    $(document).ready(fn);
 })(jQuery);

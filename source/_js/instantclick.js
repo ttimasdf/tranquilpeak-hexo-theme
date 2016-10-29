@@ -363,7 +363,7 @@ var InstantClick = function(document, location) {
 
       for (i = 0; i < scripts.length; i++) {
         script = scripts[i]
-        if (script.hasAttribute('data-no-instant')) {
+        if (script.hasAttribute('data-no-instant') || script.parentNode.hasAttribute('data-no-instant')) {
           continue
         }
         copy = document.createElement('script')

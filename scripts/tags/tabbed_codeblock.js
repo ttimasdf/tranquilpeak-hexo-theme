@@ -14,7 +14,7 @@ jsDom.env('', function(err, window) {
     console.error(err);
     return;
   }
-  
+
   var $ = require('jquery')(window);
 
   /**
@@ -94,7 +94,7 @@ jsDom.env('', function(err, window) {
     return html;
   }
 
-  /**
+  /*
    * Tabbed code block tag
    *
    * Syntax:
