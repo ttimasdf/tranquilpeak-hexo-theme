@@ -82,8 +82,8 @@
       }
     }
   };
-  
-  $(document).ready(function() {
+
+  var fn = function() {
     var shareOptionsBar = new ShareOptionsBar();
     shareOptionsBar.run();
   }
