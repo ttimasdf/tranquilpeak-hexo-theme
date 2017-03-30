@@ -25,7 +25,7 @@
         <% for (var i in theme.sidebar) { %>
             <ul class="sidebar-buttons">
             <% for (var n in theme.sidebar[i]) { %>
-                <li class="sidebar-button">
+                <li class="sidebar-button" <% if(theme.sidebar[i][n].blacklist) { %>data-no-instant<% } %>>
                     <% if (url_for(theme.sidebar[i][n].url).indexOf(config.url) < 0 && url_for(theme.sidebar[i][n].url).indexOf(':') >= 0) { %>
                         <a  class="sidebar-button-link <% if (theme.sidebar[i][n].class) { %><%= theme.sidebar[i][n].class %><% } %>" href="<%- url_for(theme.sidebar[i][n].url) %>" target="_blank" rel="noopener">
                     <% } else { %>
