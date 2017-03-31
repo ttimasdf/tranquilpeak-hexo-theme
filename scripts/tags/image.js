@@ -1,6 +1,9 @@
 (function() {
   'use strict';
   
+  var PostAsset = hexo.model('PostAsset');
+  var url = require('url');
+  
   /**
    * search index in an array with a regex
    * @param {Array} array
@@ -35,7 +38,7 @@
    * Image tag
    *
    * Syntax:
-   *     {% image [classes] group:group1 /path/to/image [/path/to/thumbnail]
+   *     {% image [asset?] [classes] group:group1 /path/to/image [/path/to/thumbnail]
    *     [width of thumbnail] [height of thumbnail] [title text] %}
    * E.g:
    *     {% image fig-50 right fancybox group:travel image2.png http://example.com/image125.png
@@ -51,7 +54,12 @@
     var fancybox = '';
     var clear = '';
     var group = '';
+    var isAsset = false;
     // Get CSS classes
+    if (args[0] == 'asset') {
+      isAsset = true;
+      args.shift();
+    }
     while (args.length && rClass.test(args[0])) {
       classes.push(args.shift());
     }
@@ -65,6 +73,10 @@
     
     // Get path of original image
     original = args.shift();
+    if (isAsset) {
+      var asset = PostAsset.findOne({post: this._id, slug: original});
+      original = url.resolve(hexo.config.root, asset.path);
+    }
     
     // Get path of thumbnail image
     if (args.length && rPath.test(args[0])) {
@@ -83,6 +95,9 @@
     
     // Get title of image
     var title = args.join(' ');
+    if (isAsset) {
+      title = title ? title : asset.slug;
+    }
     // Build the image HTML structure
     var image = '<img class="fig-img" src="' + (thumbnail || original) + '" ';
     // add image size
@@ -111,7 +126,7 @@
     if (classes.indexOf(fancyboxClass) >= 0) {
       fancybox +=
         '<a class="' + fancyboxClass + '" href="' + original + '" title="' + title + '"' +
-        ' data-fancybox-group="' + group + '">';
+        ' data-fancybox-group="' + group + '" data-no-instant>';
       fancybox += image;
       fancybox += '</a>';
       // remove `fancyfox` class of `classes` to not be attached on the main div
